@@ -1,0 +1,95 @@
+<div class="container">
+  <!--Page de Connexion-->
+  <div *ngIf="!isCreatingProfile">
+    <h1>Bienvenue au Quiz</h1>
+    <h2>Connectez vous avec vos identifiants</h2>
+
+    <!--Formulaire de Connexion-->
+    <form (ngSubmit)="onSubmit(quizForm)" #quizForm="ngForm" class="form">
+      <div class="form-group">
+        <label for="firstName"></label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          ngModel
+          required
+          placeholder="Prénom"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName"></label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          ngModel
+          required
+          placeholder="Nom"
+          class="form-control"
+        />
+      </div>
+
+      <!--Boutons actions-->
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">Connexion</button>
+        <button
+          type="button"
+          (click)="toggleCreateProfile()"
+          class="btn btn-secondary"
+        >
+          Créer Profil
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Formulaire de création de profil -->
+  <div  *ngIf="isCreatingProfile">
+    <h2>Renseignez vos informations</h2>
+    <form
+      (ngSubmit)="onCreateProfile(profileForm)"
+      #profileForm="ngForm"
+      class="form"
+    >
+      <div class="form-group">
+        <label for="newFirstName"></label>
+        <input
+          type="text"
+          id="newFirstName"
+          name="newFirstName"
+          ngModel
+          required
+          placeholder="Prénom"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="newLastName"></label>
+        <input
+          type="text"
+          id="newLastName"
+          name="newLastName"
+          ngModel
+          required
+          placeholder="Nom"
+          class="form-control"
+        />
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">Créer Profil</button>
+        <button
+          type="button"
+          (click)="toggleCreateProfile()"
+          class="btn btn-secondary"
+        >
+          Annuler
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

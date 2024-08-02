@@ -1,0 +1,27 @@
+<div class="quiz-container">
+  <h2>Niveau {{ currentLevel + 1 }}</h2>
+  <div *ngIf="questions.length > 0">
+    <div class="question">
+      <p>{{ questions[currentQuestionIndex].question }}</p>
+      <div class="options">
+        <button
+          *ngFor="let option of questions[currentQuestionIndex].options"
+          (click)="selectAnswer(option)"
+          [class.selected]="selectedAnswer === option"
+        >
+          {{ option }}
+        </button>
+      </div>
+    </div>
+    <button
+      (click)="nextQuestion()"
+      [disabled]="selectedAnswer === null"
+      class="next-button"
+    >
+      Suivant
+    </button>
+  </div>
+  <div *ngIf="questions.length === 0">
+    <p>Chargement des questions...</p>
+  </div>
+</div>
